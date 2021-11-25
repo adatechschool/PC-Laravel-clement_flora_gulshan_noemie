@@ -14,7 +14,7 @@ class ArticleFactory extends Factory
     public function definition()
 {
     return [
-        'description' => "Mon chat est trop mignon",
+        'description' => "Mon chien est trop mignon",
         'img_url' => $this->faker->imageUrl(640, 480, 'cats'),
         'user_id' => 1
     ];
