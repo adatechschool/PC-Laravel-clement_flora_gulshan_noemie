@@ -11,8 +11,9 @@ class ArticleController extends BaseController
 {
     public function index()
     {
-        $articles = Article::latest()->get();
-        return view("articles.dashboard", compact("articles"));
+        $articles = Article::all();
+        return view("articles.index", compact('articles'));
+       
     }
 
     /**

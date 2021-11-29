@@ -1,6 +1,9 @@
+<?php use microblogging\app\Http\Controllers\ArticleController; ?>
+
 @extends("layouts.app")
-@section("title", "Tous les articles")
-@section("content")
+@section("description", "Tous les articles")
+@section("name")
+
 
 <x-app-layout>
     <x-slot name="header">
@@ -31,7 +34,7 @@
             </thead>
             <tbody>
                 <!-- On parcourt la collection de Post -->
-                @foreach ($articles ?? '' as $article)
+                @foreach ($articles as $article)
                 <tr>
                     <td>
                         <!-- Lien pour afficher un Post : "posts.show" -->
