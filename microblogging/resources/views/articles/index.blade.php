@@ -26,7 +26,7 @@
 					<a href="{{ route('articles.show', $article) }}" title="Lire l'article" >{{ $article->description }}</a>
 				</td>
 				<td>
-				e	<!-- Lien pour modifier un Post : "posts.edit" -->
+					<!-- Lien pour modifier un Post : "posts.edit" -->
 					<a href="{{ route('articles.edit', $article) }}" title="Modifier l'article" >Modifier</a>
 				</td>
 				<td>

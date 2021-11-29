@@ -52,7 +52,7 @@ class ArticleController extends BaseController
         ]);
     
         // 4. On retourne vers tous les posts : route("posts.index")
-        return redirect(route("articles.dashboard"));
+        return redirect(route("articles.index"));
     }
     
 
