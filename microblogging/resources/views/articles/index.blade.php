@@ -14,7 +14,6 @@
 		<thead>
 			<tr>
 				<th>Titre</th>
-				<th colspan="2" >Opérations</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,6 +23,8 @@
 				<td>
 					<!-- Lien pour afficher un Post : "posts.show" -->
 					<a href="{{ route('articles.show', $article) }}" title="Lire l'article" >{{ $article->description }}</a>
+					<img src="{{ asset('storage/'.trim($article->img_url, '"')) }}" height="300px" width="300px" alt="">
+
 				</td>
 				<td>
 					<!-- Lien pour modifier un Post : "posts.edit" -->

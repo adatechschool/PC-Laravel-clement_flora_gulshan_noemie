@@ -20,7 +20,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-
+Route::get('/test', function() {
+  return File::get('storage/articles/2iLWFBknyhBQfaXJdMefHnQDmXyYwg20X5SksAfJ.jpg');
+  });
 
 require __DIR__.'/auth.php';
 
