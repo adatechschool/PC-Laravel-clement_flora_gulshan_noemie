@@ -1,5 +1,6 @@
-<x-guest-layout>
+@extends("layouts.app")
+@section("content")
   {{$article->user->name}}: 
   {{$article->description}}
-  <img src="{{ $article->img_url }}">
-</x-guest-layout>
+  <img src="{{ asset('storage/'.trim($article->img_url, '"')) }}" height="700px" width="700px" alt="">
+@endsection
