@@ -53,15 +53,9 @@
 			@enderror
 		</p>
 		<p>
-			<label for="name" >Nom User</label><br/>
-
-			<!-- S'il y a un $post->content, on complète la valeur du textarea -->
-			<textarea name="name" id="name" lang="fr" rows="10" cols="50" placeholder="Le nom du user" >{{ isset($article->name) ? $article->name : old('name') }}</textarea>
-
-			<!-- Le message d'erreur pour "content" -->
-			@error("name")
-			<div>{{ $message }}</div>
-			@enderror
+			<x-slot name="user">
+				<div>{{Auth::user()->name}}</div>
+			</x-slot>
 		</p>
 
 		<input type="submit" name="valider" value="Valider" >

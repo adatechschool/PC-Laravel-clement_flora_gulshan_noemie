@@ -6,6 +6,7 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends BaseController
 {
@@ -15,7 +16,6 @@ class ArticleController extends BaseController
         return view("articles.index", compact('articles'));
        
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -35,10 +35,10 @@ class ArticleController extends BaseController
    
     public function store(Request $request) {
         // 1. La validation
-        $this->validate($request, [
+        $request->validate([
             'description' => 'bail|required|string|max:255',
             "img_url" => 'bail|required|image|max:1024',
-            "name" => 'bail|required',
+            "name" => 'bail',
         ]);
     
         // 2. On upload l'image dans "/storage/app/public/posts"
@@ -48,7 +48,7 @@ class ArticleController extends BaseController
         Article::create([
             "description" => $request->description,
             "img_url" => $chemin_image,
-            "name" => $request->name,
+            "user_id" => auth()->id(),
         ]);
     
         // 4. On retourne vers tous les posts : route("posts.index")
@@ -93,7 +93,7 @@ class ArticleController extends BaseController
     // Les règles de validation pour "title" et "content"
     $rules = [
         'description' => 'bail|required|string|max:255',
-        "name" => 'bail|required',
+        "name" => 'bail',
     ];
 
     // Si une nouvelle image est envoyée
@@ -102,7 +102,7 @@ class ArticleController extends BaseController
         $rules["img_url"] = 'bail|required|image|max:1024';
     }
 
-    $this->validate($request, $rules);
+        $request->validate($rules);
 
     // 2. On upload l'image dans "/storage/app/public/posts"
     if ($request->has("img_url")) {
@@ -139,6 +139,6 @@ class ArticleController extends BaseController
     $article->delete();
 
     // Redirection route "posts.index"
-    return redirect(route('articles.dashboard'));
+    return redirect(route('articles.index'));
     }
 }
