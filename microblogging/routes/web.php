@@ -1,6 +1,9 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\UserController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 //Route::get('/test', function() {
   //return File::get('storage/articles/2iLWFBknyhBQfaXJdMefHnQDmXyYwg20X5SksAfJ.jpg');
@@ -27,3 +30,6 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('articles', ArticleController::class);
+
+Route::resource("users", UserController::class);
+
