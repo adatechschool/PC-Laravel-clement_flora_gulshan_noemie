@@ -8,12 +8,12 @@
                     <a href="{{ route('articles.index') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
-                </div> -->
+                </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
-                        {{ __('users') }}
+                        {{ __('profil') }}
                     </x-nav-link>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Article;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -17,12 +18,9 @@ class UserController extends BaseController
     public function index()
     {
     $user = Auth::user();
-    //
-    $userInfo = User::where('id', $user)->get();
-
-    // On transmet les Post à la vue
-    return view("users.profile", compact("user"));
-    // compact ??
+    $articles = Article::where('user_id', $user->id)->get();
+    //$userInfo = User::where('id', $user)->get();
+    return view("users.profile", compact("user"), compact("articles"));
     }
 
     public function show(User $user)
