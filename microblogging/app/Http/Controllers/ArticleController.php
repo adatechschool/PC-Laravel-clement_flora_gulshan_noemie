@@ -7,13 +7,16 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 
 class ArticleController extends BaseController
 {
     public function index()
     {
-        $articles = Article::all();
+        //$articles = Article::all();
+        $articles= Article::simplePaginate(5);
+
         return view("articles.index", compact('articles'));
        
     }

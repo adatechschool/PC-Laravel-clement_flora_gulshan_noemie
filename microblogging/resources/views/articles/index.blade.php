@@ -42,7 +42,9 @@
 				</td>
 			</tr>
 			@endforeach
+			
 		</tbody>
 	</table>
+	<?php echo $articles->render(); ?>
 	
 @endsection
