@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-
+use Illuminate\Support\Facades\DB;
 class UserController extends BaseController
 {
     /**
@@ -17,8 +16,9 @@ class UserController extends BaseController
      */
     public function index()
     {
-        //      //On récupère tous les Post
-    $user = User::all();
+    $user = Auth::user();
+    //
+    $userInfo = User::where('id', $user)->get();
 
     // On transmet les Post à la vue
     return view("users.profile", compact("user"));
@@ -41,7 +41,7 @@ class UserController extends BaseController
     public function update(Request $request, User $user)
     {
         $rules = [
-            'name' => 'bail|required|string|max:60',
+            //'name' => 'bail|string|max:60',
             "biography" => 'bail',
             'user_img' => 'bail|image|max:2048',
         ];
@@ -65,13 +65,13 @@ class UserController extends BaseController
     
         // 3. On met à jour les informations du Post
         $user->update([
-            "name" => $request->name,
+            //"name" => $request->name,
             "user_img" => isset($chemin_image_user) ? $chemin_image_user : $user->user_img,
             "biography" => $request->biography
         ]);
     
         // 4. On affiche le Post modifié : route("posts.show")
-        return redirect(route("users.profile", $user));
+        return redirect(route("users.index", $user));
     }
     
 

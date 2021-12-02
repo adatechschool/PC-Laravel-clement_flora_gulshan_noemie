@@ -6,7 +6,7 @@
 
 	
 	<!-- Le formulaire est géré par la route "posts.update" -->
-	<form method="POST" action="{{ route('users.update', $) }}" enctype="multipart/form-data" >
+	<form method="POST" action="{{ route('users.update', $user) }}" enctype="multipart/form-data" >
 
 		<!-- <input type="hidden" name="_method" value="PUT"> -->
 		@method('PUT')

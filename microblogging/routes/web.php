@@ -19,10 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
+//Route::get('/users', function () {
+ // return view('profile');
+//});
 //Route::get('/test', function() {
   //return File::get('storage/articles/2iLWFBknyhBQfaXJdMefHnQDmXyYwg20X5SksAfJ.jpg');
   //});
