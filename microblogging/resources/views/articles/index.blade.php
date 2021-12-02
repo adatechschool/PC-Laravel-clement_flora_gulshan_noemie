@@ -19,20 +19,20 @@
 		<tbody>
 			<!-- On parcourt la collection de Post -->
 			@foreach ($articles as $article)
-			<tr>
-				<td>
+			<tr class="flex flex-col p-6" >
+				<td class=" flex-row p-6">
 					<!-- Lien pour afficher un Post : "posts.show" -->
 					<a href="{{ route('articles.show', $article) }}" title="Lire l'article" >{{ $article->description }}</a>
 					<img src="{{ asset('storage/'.trim($article->img_url, '"')) }}" height="300px" width="300px" alt="">
 
 				</td>
-				<td>
+				<td >
 					<!-- Lien pour modifier un Post : "posts.edit" -->
-					<a href="{{ route('articles.edit', $article) }}" title="Modifier l'article" >Modifier</a>
+					<a href="{{ route('articles.edit', $article) }}" title="Modifier l'article" class="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" type="button">Modifier</a>
 				</td>
 				<td>
 					<!-- Formulaire pour supprimer un Post : "posts.destroy" -->
-					<form method="POST" action="{{ route('articles.destroy', $article) }}" >
+					<form method="POST" class="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" type="button" action="{{ route('articles.destroy', $article) }}" >
 						<!-- CSRF token -->
 						@csrf
 						<!-- <input type="hidden" name="_method" value="DELETE"> -->
